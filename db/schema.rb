@@ -25,7 +25,9 @@ ActiveRecord::Schema.define(version: 2020_08_04_182823) do
 
   create_table "shots", force: :cascade do |t|
     t.bigint "club_id", null: false
-    t.string "distance", null: false
+    t.integer "distance", null: false
+    t.string "surface"
+    t.string "shot_quality"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["club_id"], name: "index_shots_on_club_id"

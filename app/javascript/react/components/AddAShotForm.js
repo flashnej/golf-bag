@@ -3,6 +3,8 @@ import { Link, Redirect } from "react-router-dom"
 
 const AddAShotForm = (props) => {
   const [distance, setDistance] = useState('')
+  const [shotQuality, setShotQuality] = useState('average')
+  const [surface, setSurface] = useState('')
   const [redirect, setRedirect] = useState(false)
 
   const club = props.match.params.id
@@ -11,7 +13,7 @@ const AddAShotForm = (props) => {
     event.preventDefault()
     fetch('/api/v1/shots', {
       method: "POST",
-      body: JSON.stringify({distance: distance, club: club}),
+      body: JSON.stringify({distance: distance, club: club, shotQuality: shotQuality, surface: surface}),
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json"
@@ -20,15 +22,21 @@ const AddAShotForm = (props) => {
     .then((response) => {
       if (response.ok) {
         setRedirect(true)
+        console.log(distance)
       } else {
         debugger
       }
     })
-    console.log(distance)
   }
 
   const handleChange = (event) => {
-    setDistance(event.target.value)
+    if (event.target.id === "distance") {
+      setDistance(event.target.value)
+    } else if (event.target.id === "shotQuality") {
+        setShotQuality(event.target.value)
+    } else if (event.target.id === "surface") {
+      setSurface(event.target.value)
+    }
   }
 
   if (redirect) {
@@ -39,7 +47,23 @@ const AddAShotForm = (props) => {
     <div>
       <form onSubmit={createShot}>
         <label> Distance:
-          <input type="text" id="name" onChange={handleChange} value={distance} />
+          <input type="number" id="distance" onChange={handleChange} value={distance} />
+        </label>
+        <label> Surface:
+          <select value={surface} onChange={handleChange} id="surface">
+            <option value=""></option>
+            <option value="tee shot">Tee Shot</option>
+            <option value="fairway">Fairway</option>
+            <option value="rough">Rough</option>
+            <option value="sand">Sand</option>
+          </select>
+        </label>
+        <label> Shot Quality:
+          <select value={shotQuality} onChange={handleChange} id="shotQuality">
+            <option value="good">Good</option>
+            <option value="bad">Bad</option>
+            <option value="average">Average</option>
+          </select>
         </label>
         <input className="button" type="submit" value="Submit" />
       </form>

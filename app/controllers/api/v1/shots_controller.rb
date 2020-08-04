@@ -4,8 +4,10 @@ class Api::V1::ShotsController < ApplicationController
   def create
     club_id = params["club"].to_i
     distance = params["distance"]
+    shot_quality = params["shotQuality"]
+    surface = params["surface"]
 
-    shot = Shot.new(club_id:club_id, distance:distance)
+    shot = Shot.new(club_id:club_id, distance:distance, shot_quality: shot_quality, surface: surface)
 
     if shot.save
       render json: {shot: shot}
