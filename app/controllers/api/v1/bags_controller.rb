@@ -22,4 +22,8 @@ class Api::V1::BagsController < ApplicationController
     end
   end
 
+  def show
+    render json: Bag.find(params[:id])
+  end
+
 end
