@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 
-import BagTile from "./BagTile.js"
+import ClubTile from "./ClubTile.js"
 
 const HomePage = (props) => {
-  const [bags, setBags] = useState([])
+  const [clubs, setClubs] = useState([])
 
   useEffect(() => {
-    fetchBags()
+    fetchClubs()
   }, [])
 
-  const fetchBags = () => {
-    fetch('/api/v1/bags')
+  const fetchClubs = () => {
+    fetch('/api/v1/clubs')
     .then((response) => {
       if (response.ok) {
         return response
@@ -21,27 +21,26 @@ const HomePage = (props) => {
       })
       .then((response) => response.json())
       .then((body) => {
-        setBags(body.bags)
-        console.log(body.bags[0].name)
+        setClubs(body.clubs)
       })
   }
 
-  let bagTiles
-  if (bags.length !== 0) {
-    bagTiles = bags.map((bag) => {
-      return <BagTile
-              key={bag["id"]}
-              bag={bag}
+  let clubTiles
+  if (clubs.length !== 0) {
+    clubTiles = clubs.map((club) => {
+      return <ClubTile
+              key={club["id"]}
+              club={club}
             />
     })
   }
 
   return (
     <div>
-      <h1> Your Bags: </h1>
-      {bagTiles}
-      <Link to="/addABag">
-        <input className="button"  id="addABag" value="Add a bag" />
+      <h1> Your Clubs: </h1>
+      {clubTiles}
+      <Link to="/addAClub">
+        <input className="button"  id="addAClub" value="Add a club" />
       </Link>
     </div>
   )

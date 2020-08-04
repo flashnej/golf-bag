@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react"
-import { Redirect } from "react-router-dom"
+import { Link, Redirect } from "react-router-dom"
 
-
-const AddABagForm = (props) => {
-  const [bagName, setBagName] = useState('')
+const AddAShotForm = (props) => {
+  const [distance, setDistance] = useState('')
   const [redirect, setRedirect] = useState(false)
 
-  const createBag = (event) => {
+  const club = props.match.params.id
+
+  const createShot = (event) => {
     event.preventDefault()
-    fetch('/api/v1/bags', {
+    fetch('/api/v1/shots', {
       method: "POST",
-      body: JSON.stringify({name: bagName}),
+      body: JSON.stringify({distance: distance, club: club}),
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json"
@@ -23,22 +24,22 @@ const AddABagForm = (props) => {
         debugger
       }
     })
-    console.log(bagName)
+    console.log(distance)
   }
 
   const handleChange = (event) => {
-    setBagName(event.target.value)
+    setDistance(event.target.value)
   }
 
   if (redirect) {
-    return <Redirect to='/' />
+    return <Redirect to={`../club/${club}`} />
   }
 
   return (
     <div>
-      <form onSubmit={createBag}>
-        <label> Name:
-          <input type="text" id="name" onChange={handleChange} value={bagName} />
+      <form onSubmit={createShot}>
+        <label> Distance:
+          <input type="text" id="name" onChange={handleChange} value={distance} />
         </label>
         <input className="button" type="submit" value="Submit" />
       </form>
@@ -46,4 +47,4 @@ const AddABagForm = (props) => {
   )
 }
 
-export default AddABagForm
+export default AddAShotForm
