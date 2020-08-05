@@ -24,10 +24,10 @@ class Api::V1::ClubsController < ApplicationController
 
   def show
     club = Club.find(params[:id])
-    tee_shots = Shot.where(club_id: params[:id], surface: "tee shot").last(2)
-    rough = Shot.where(club_id: params[:id], surface: "rough").last(2)
-    sand = Shot.where(club_id: params[:id], surface: "sand").last(2)
-    fairway = Shot.where(club_id: params[:id], surface: "fairway").last(2)
+    tee_shots = Shot.where(club_id: params[:id], surface: "tee shot").last(5)
+    rough = Shot.where(club_id: params[:id], surface: "rough").last(5)
+    sand = Shot.where(club_id: params[:id], surface: "sand").last(5)
+    fairway = Shot.where(club_id: params[:id], surface: "fairway").last(5)
     render json: {
       club: club,
       shots: {teeShots: tee_shots, rough: rough, sand: sand, fairway:fairway }

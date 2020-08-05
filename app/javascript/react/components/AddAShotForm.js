@@ -11,7 +11,7 @@ const AddAShotForm = (props) => {
 
   const createShot = (event) => {
     event.preventDefault()
-    fetch('/api/v1/shots', {
+    fetch(`/api/v1/clubs/${club}/shots`, {
       method: "POST",
       body: JSON.stringify({distance: distance, club: club, shotQuality: shotQuality, surface: surface}),
       headers: {

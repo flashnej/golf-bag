@@ -1,48 +1,37 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import { Link } from "react-router-dom"
 
 const ClubShowPage = (props) => {
   const [club, setClub] = useState({})
   const [shots, setShots] = useState([])
-  const [surface, setSurface] = useState('')
+  const [surface, setSurface] = useState(null)
   const id = props.match.params.id
 
-  useEffect(() => {
-    fetch(`/api/v1/clubs/${id}`)
-      .then((response) => {
-        if (response.ok) {
-          return response;
-        } else {
-          debugger
-        }
-      })
-      .then((response) => response.json())
-      .then((body) => {
-        setClub(body.club);
-        setShots(body.shots)
-      })
-      .catch((error) => console.error(`Error in fetch: ${error.message}`));
-  }, []);
-
   const handleChange = (event) => {
-      setSurface(event.target.value)
+    setSurface(capitalizeFirstLetter(event.target.value))
+    fetch(`/api/v1/clubs/${id}/shots/${event.target.value}`)
+    .then((response) => {
+      if (response.ok) {
+        return response;
+      } else {
+        debugger
+      }
+    })
+    .then((response) => response.json())
+    .then((body) => {
+      setShots(body)
+    })
+    .catch((error) => console.error(`Error in fetch: ${error.message}`));
   }
 
-  let teeShotList
-  let roughShotList
-  let sandShotList
+  function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+  let shotList
   let fairwayShotList
   if (shots.length !== 0) {
-    teeShotList = shots.teeShots.map((shot) => {
-      return(<li>{shot.distance} yards / {shot.shot_quality} / {shot.surface}</li>)
-    })
-    roughShotList = shots.rough.map((shot) => {
-      return(<li>{shot.distance} yards / {shot.shot_quality} / {shot.surface}</li>)
-    })
-    sandShotList = shots.sand.map((shot) => {
-      return(<li>{shot.distance} yards / {shot.shot_quality} / {shot.surface}</li>)
-    })
-    fairwayShotList = shots.fairway.map((shot) => {
+    shotList = shots.map((shot) => {
       return(<li>{shot.distance} yards / {shot.shot_quality} / {shot.surface}</li>)
     })
   }
@@ -52,7 +41,7 @@ const ClubShowPage = (props) => {
     <h1>{club.name}</h1>
     <form>
       <label> Surface:
-        <select value={surface} onChange={handleChange} id="surface">
+        <select onChange={handleChange} id="surface">
           <option value=""></option>
           <option value="tee shot">Tee Shot</option>
           <option value="fairway">Fairway</option>
@@ -61,23 +50,11 @@ const ClubShowPage = (props) => {
         </select>
       </label>
     </form>
-    <h4>Tee Shots </h4>
+    <h4>{surface} Shots </h4>
       <ul>
-        {teeShotList}
+        {shotList}
       </ul>
-      <h4>Rough Shots </h4>
-        <ul>
-          {roughShotList}
-        </ul>
-        <h4>Fairway Shots </h4>
-          <ul>
-            {fairwayShotList}
-          </ul>
-          <h4>Sand Shots </h4>
-            <ul>
-              {sandShotList}
-            </ul>
-      <Link to={`../${club.id}/addAShot`}>
+      <Link to={`../${id}/addAShot`}>
         <input className="button"  id="addAShot" value="Add a shot" />
       </Link>
     </div>

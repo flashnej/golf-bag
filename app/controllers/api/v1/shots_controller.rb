@@ -16,4 +16,9 @@ class Api::V1::ShotsController < ApplicationController
     end
   end
 
+  def show
+    shots = Shot.where(club_id: params[:club_id], surface: params[:id]).last(5)
+    render json: shots
+  end
+
 end
