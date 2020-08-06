@@ -21,4 +21,19 @@ class Api::V1::ShotsController < ApplicationController
     render json: shots
   end
 
+  def search
+    user = current_user
+    shots = user.shots.where(surface: params["surface"])
+    shots = shots.where(distance: (params["distance"].to_i-30)..(params["distance"].to_i+30))
+    clubAndShot = []
+    shots.each do |shot|
+      club = Club.where(id: shot.club_id)
+      clubAndShot = clubAndShot.push([club[0].club_name, shot])
+    end
+
+    render json: {
+      shots: clubAndShot,
+    }
+  end
+
 end

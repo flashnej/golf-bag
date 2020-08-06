@@ -42,6 +42,9 @@ const HomePage = (props) => {
       <Link to="/addAClub">
         <input className="button"  id="addAClub" value="Add a club" />
       </Link>
+      <Link to="/searchAShot">
+        <input className="button"  id="searchAShot" value="Look up a shot" />
+      </Link>
     </div>
   )
 }

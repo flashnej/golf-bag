@@ -38,7 +38,7 @@ const ClubShowPage = (props) => {
 
   return (
     <div>
-    <h1>{club.name}</h1>
+    <h1>{club.club_name}</h1>
     <form>
       <label> Surface:
         <select onChange={handleChange} id="surface">

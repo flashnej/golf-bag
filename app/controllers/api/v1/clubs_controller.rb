@@ -11,9 +11,9 @@ class Api::V1::ClubsController < ApplicationController
   end
 
   def create
-    name = params["name"]
+    name = params["club_name"]
     user = current_user
-    club = Club.new(user:user, name:name)
+    club = Club.new(user:user, club_name:name)
 
     if club.save
       render json: {club: club}

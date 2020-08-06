@@ -10,7 +10,7 @@ const AddAClubForm = (props) => {
     event.preventDefault()
     fetch('/api/v1/clubs', {
       method: "POST",
-      body: JSON.stringify({name: clubName}),
+      body: JSON.stringify({club_name: clubName}),
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json"
