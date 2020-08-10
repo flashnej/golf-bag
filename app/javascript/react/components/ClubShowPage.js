@@ -32,7 +32,7 @@ const ClubShowPage = (props) => {
   let fairwayShotList
   if (shots.length !== 0) {
     shotList = shots.map((shot) => {
-      return(<li>{shot.distance} yards / {shot.shot_quality} / {shot.surface}</li>)
+      return( <li>{shot.distance} yards / {shot.shot_quality} / {shot.surface}</li>)
     })
   }
 

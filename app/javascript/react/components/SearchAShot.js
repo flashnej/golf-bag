@@ -34,7 +34,6 @@ const SearchAShot = (props) => {
   let recomendedShotTile
   if (shots.length !== 0) {
     recomendedShotTile = shots.map((shot) => {
-      let key = shot[1].id
       return(
         <li>{shot[0]} / {shot[1].distance} yards / {shot[1].shot_quality}</li>
       )
