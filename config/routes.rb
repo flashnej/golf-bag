@@ -3,12 +3,17 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  get '/addABag', to: 'static_pages#index'
-  get '/bag/:id', to: 'static_pages#index'
+  get '/addAClub', to: 'static_pages#index'
+  get '/club/:id', to: 'static_pages#index'
+  get ':id/addAShot', to: 'static_pages#index'
+  get '/searchAShot', to: 'static_pages#index'
 
   namespace :api do
     namespace :v1 do
-      resources :bags, only: [:index, :create, :show]
+      resources :clubs, only: [:index, :create, :show] do
+        resources :shots, only: [:index, :create, :show]
       end
+      get '/shots/:distance/:surface' => 'shots#search'
     end
   end
+end

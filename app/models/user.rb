@@ -1,7 +1,7 @@
 class User < ApplicationRecord
-  validates :user_name, presence: true, uniqueness: true
 
-  has_many :bags
+  has_many :clubs
+  has_many :shots, through: :clubs
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

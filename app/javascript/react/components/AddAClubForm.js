@@ -2,15 +2,15 @@ import React, { useState, useEffect } from "react"
 import { Redirect } from "react-router-dom"
 
 
-const AddABagForm = (props) => {
-  const [bagName, setBagName] = useState('')
+const AddAClubForm = (props) => {
+  const [clubName, setClubName] = useState('')
   const [redirect, setRedirect] = useState(false)
 
-  const createBag = (event) => {
+  const createClub = (event) => {
     event.preventDefault()
-    fetch('/api/v1/bags', {
+    fetch('/api/v1/clubs', {
       method: "POST",
-      body: JSON.stringify({name: bagName}),
+      body: JSON.stringify({club_name: clubName}),
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json"
@@ -23,11 +23,11 @@ const AddABagForm = (props) => {
         debugger
       }
     })
-    console.log(bagName)
+    console.log(clubName)
   }
 
   const handleChange = (event) => {
-    setBagName(event.target.value)
+    setClubName(event.target.value)
   }
 
   if (redirect) {
@@ -36,9 +36,9 @@ const AddABagForm = (props) => {
 
   return (
     <div>
-      <form onSubmit={createBag}>
+      <form onSubmit={createClub}>
         <label> Name:
-          <input type="text" id="name" onChange={handleChange} value={bagName} />
+          <input type="text" id="name" onChange={handleChange} value={clubName} />
         </label>
         <input className="button" type="submit" value="Submit" />
       </form>
@@ -46,4 +46,4 @@ const AddABagForm = (props) => {
   )
 }
 
-export default AddABagForm
+export default AddAClubForm
