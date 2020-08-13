@@ -3,24 +3,28 @@ class Api::V1::ClubsController < ApplicationController
 
   def index
     user = current_user
-
+    if user.clubs === []
+      Club.new(user:user, club_name:"Driver").save
+      Club.new(user:user, club_name:"3 Wood").save
+      Club.new(user:user, club_name:"4 Wood").save
+      Club.new(user:user, club_name:"5 Wood").save
+      Club.new(user:user, club_name:"Hybrid").save
+      Club.new(user:user, club_name:"4 Iron").save
+      Club.new(user:user, club_name:"5 Iron").save
+      Club.new(user:user, club_name:"6 Iron").save
+      Club.new(user:user, club_name:"7 Iron").save
+      Club.new(user:user, club_name:"8 Iron").save
+      Club.new(user:user, club_name:"9 Iron").save
+      Club.new(user:user, club_name:"Pitch Wedge").save
+      Club.new(user:user, club_name:"Sand Wedge").save
+      Club.new(user:user, club_name:"Lob Wedge").save
+    end
     clubs = user.clubs
     render json: {
       clubs: clubs
     }
   end
 
-  def create
-    name = params["club_name"]
-    user = current_user
-    club = Club.new(user:user, club_name:name)
-
-    if club.save
-      render json: {club: club}
-    else
-      render json: {error: club.errors.full_messages }, sttus: :unprocessable_entity
-    end
-  end
 
   def show
     club = Club.find(params[:id])
