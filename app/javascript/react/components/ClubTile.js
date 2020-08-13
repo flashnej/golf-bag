@@ -4,10 +4,12 @@ import { Link } from "react-router-dom"
 const ClubTile = (props) => {
 
   return (
-    <div>
-      <ul>
-        <li><Link to={`/club/${props.club.id}`}>{props.club.club_name}</Link></li>
-      </ul>
+    <div className="columns cell small-3">
+      <a href={`./club/${props.club.id}`}>
+        <div className="clubTile">
+            <p>{props.club.club_name}</p>
+        </div>
+      </a>
     </div>
   )
 }

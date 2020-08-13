@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
+import { Link, Redirect, Route } from "react-router-dom"
 
 import ClubTile from "./ClubTile.js"
 
 const HomePage = (props) => {
   const [clubs, setClubs] = useState([])
+  const [redirect, setRedirect] = useState(false)
 
   useEffect(() => {
     fetchClubs()
@@ -21,8 +22,18 @@ const HomePage = (props) => {
       })
       .then((response) => response.json())
       .then((body) => {
-        setClubs(body.clubs)
+        if (body.error) {
+          setRedirect(true)
+        } else {
+          setClubs(body.clubs)
+        }
       })
+  }
+
+  if (redirect === true) {
+    <Route path="/">
+      <Redirect to="/searchAShot" />
+    </Route>
   }
 
   let clubTiles
@@ -36,9 +47,11 @@ const HomePage = (props) => {
   }
 
   return (
-    <div>
+    <div className="grid-container">
       <h1> Your Clubs: </h1>
+      <div className="grid-x grid-margin-x">
       {clubTiles}
+      </div>
       <Link to="/searchAShot">
         <input className="button"  id="searchAShot" value="Look up a shot" />
       </Link>
