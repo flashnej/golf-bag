@@ -30,12 +30,6 @@ const HomePage = (props) => {
       })
   }
 
-  if (redirect === true) {
-    <Route path="/">
-      <Redirect to="/searchAShot" />
-    </Route>
-  }
-
   let clubTiles
   if (clubs.length !== 0) {
     clubTiles = clubs.map((club) => {
@@ -58,5 +52,5 @@ const HomePage = (props) => {
     </div>
   )
 }
-
+      // { redirect ? true : <Redirect to="/ForceSignIn" /> }
 export default HomePage
