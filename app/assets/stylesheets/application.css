@@ -29,4 +29,10 @@ div .clubTile {
   text-align: center;
   margin: 10px;
   background-color: lightgrey;
+  border-radius: 7px;
+}
+
+body{
+  background-image: url("home-background.jpeg");
+  background-size: cover;
 }

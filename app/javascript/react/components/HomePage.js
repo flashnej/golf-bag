@@ -41,6 +41,7 @@ const HomePage = (props) => {
   }
 
   return (
+    <div className="homePage">
     <div className="grid-container">
       <h1> Your Clubs: </h1>
       <div className="grid-x grid-margin-x">
@@ -49,6 +50,7 @@ const HomePage = (props) => {
       <Link to="/searchAShot">
         <input className="button"  id="searchAShot" value="Look up a shot" />
       </Link>
+    </div>
     </div>
   )
 }
