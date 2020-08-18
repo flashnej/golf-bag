@@ -21,6 +21,15 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
+  <div class="field">
+    <%= f.label :hand, "Handedness" %><br />
+    <%= f.text_field :hand%>
+    <%# <%= radio_button_tag(:hand, "left") %> %>
+    <%# <%= label_tag(:hand_left, "I am a lefty") %> %>
+    <%# <%= radio_button_tag(:hand, "right") %> %>
+    <%# <%= label_tag(:hand_right, "I am a righty") %> %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
