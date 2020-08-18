@@ -15,3 +15,24 @@
  *= require foundation_and_overrides
 
  */
+
+ .app {
+   margin-left: 5%;
+   margin-right: 5%;
+ }
+
+div .clubTile {
+  height: 60px;
+  line-height: 60px;
+  padding: 15px;
+  border: 1px solid #666;
+  text-align: center;
+  margin: 10px;
+  background-color: lightgrey;
+  border-radius: 7px;
+}
+
+body{
+  background-image: url("home-background.jpeg");
+  background-size: cover;
+}

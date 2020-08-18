@@ -3,7 +3,6 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  get '/addAClub', to: 'static_pages#index'
   get '/club/:id', to: 'static_pages#index'
   get ':id/addAShot', to: 'static_pages#index'
   get '/searchAShot', to: 'static_pages#index'
