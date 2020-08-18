@@ -6,6 +6,7 @@ import ClubTile from "./ClubTile.js"
 const HomePage = (props) => {
   const [clubs, setClubs] = useState([])
   const [redirect, setRedirect] = useState(false)
+  const [selectedClub, setSellectedClub] = useState('')
 
   useEffect(() => {
     fetchClubs()
@@ -40,6 +41,10 @@ const HomePage = (props) => {
     })
   }
 
+  const onClick = (props) => {
+    setSellectedClub(props.target.alt)
+  }
+
   return (
     <div className="homePage">
     <div className="grid-container">
@@ -54,5 +59,12 @@ const HomePage = (props) => {
     </div>
   )
 }
-      // { redirect ? true : <Redirect to="/ForceSignIn" /> }
 export default HomePage
+// </div>
+// <div className="woods">
+// <img src={driver} alt="Driver" onClick={onClick}/>
+// <img src={threewood} alt="3 Wood" onClick={onClick}/>
+// <img src={fivewood} alt="5 Wood" onClick={onClick}/>
+// <img src={hybrid} alt="Hybrid" onClick={onClick}/>
+// {selectedClub}
+// </div>
