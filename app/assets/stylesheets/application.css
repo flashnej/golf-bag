@@ -36,3 +36,13 @@ body{
   background-image: url("home-background.jpeg");
   background-size: cover;
 }
+
+.woods {
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.selected {
+  box-shadow: 10px 10px grey;
+}
