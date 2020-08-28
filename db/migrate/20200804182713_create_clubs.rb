@@ -4,6 +4,7 @@ class CreateClubs < ActiveRecord::Migration[5.2]
       t.belongs_to :user, null: false
 
       t.string :club_name, null: false
+      t.string :club_class, null: false
 
       t.timestamps
     end

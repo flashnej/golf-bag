@@ -14,7 +14,7 @@ import nineiron from '../../../assets/images/9 Iron.png'
 import pitchwedge from '../../../assets/images/Pitch.png'
 import sandwedge from '../../../assets/images/Sand.png'
 
-const ClubTile = (props) => {
+const IronTile = (props) => {
 
 
   let image
@@ -60,7 +60,7 @@ const ClubTile = (props) => {
   }
 
   return (
-    <div className="columns cell small-3">
+    <div className="columns cell auto ironTile">
       <a href={`./club/${props.club.id}`}>
         <div>
             {image}
@@ -70,4 +70,4 @@ const ClubTile = (props) => {
   )
 }
 
-export default ClubTile
+export default IronTile
