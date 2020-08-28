@@ -6,19 +6,20 @@ class Api::V1::ClubsController < ApplicationController
     if user === nil
       render json: {error:"User not signed in"}
     elsif user.clubs === []
-      Club.new(user:user, club_name:"Driver").save
-      Club.new(user:user, club_name:"3 Wood").save
-      Club.new(user:user, club_name:"5 Wood").save
-      Club.new(user:user, club_name:"Hybrid").save
-      Club.new(user:user, club_name:"3 Iron").save
-      Club.new(user:user, club_name:"4 Iron").save
-      Club.new(user:user, club_name:"5 Iron").save
-      Club.new(user:user, club_name:"6 Iron").save
-      Club.new(user:user, club_name:"7 Iron").save
-      Club.new(user:user, club_name:"8 Iron").save
-      Club.new(user:user, club_name:"9 Iron").save
-      Club.new(user:user, club_name:"Pitch Wedge").save
-      Club.new(user:user, club_name:"Sand Wedge").save
+      Club.new(user:user, club_name:"Driver", club_class: "wood").save
+      Club.new(user:user, club_name:"3 Wood", club_class: "wood").save
+      Club.new(user:user, club_name:"5 Wood", club_class: "wood").save
+      Club.new(user:user, club_name:"Hybrid", club_class: "wood").save
+      Club.new(user:user, club_name:"Sand Wedge", club_class: "iron").save
+      Club.new(user:user, club_name:"Pitch Wedge", club_class: "iron").save
+      Club.new(user:user, club_name:"9 Iron", club_class: "iron").save
+      Club.new(user:user, club_name:"8 Iron", club_class: "iron").save
+      Club.new(user:user, club_name:"7 Iron", club_class: "iron").save
+      Club.new(user:user, club_name:"6 Iron", club_class: "iron").save
+      Club.new(user:user, club_name:"5 Iron", club_class: "iron").save
+      Club.new(user:user, club_name:"4 Iron", club_class: "iron").save
+      Club.new(user:user, club_name:"3 Iron", club_class: "iron").save
+
       clubs = user.clubs
       render json: {
         clubs: clubs

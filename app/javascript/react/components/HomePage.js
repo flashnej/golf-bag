@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react"
 import { Link, Redirect, Route } from "react-router-dom"
 
-import ClubTile from "./ClubTile.js"
+import WoodTile from "./WoodTile.js"
+import IronTile from "./IronTile.js"
 
 const HomePage = (props) => {
   const [clubs, setClubs] = useState([])
@@ -31,13 +32,44 @@ const HomePage = (props) => {
       })
   }
 
+
+  let woodTiles
+  let ironTiles
+  if (clubs.length !== 0) {
+    woodTiles = clubs.map((club) => {
+      if (club["club_class"] == "wood") {
+        return <WoodTile
+                key={club["id"]}
+                club={club}
+              />
+      }
+    })
+    ironTiles = clubs.map((club) => {
+      if (club["club_class"] == "iron") {
+        return <IronTile
+                key={club["id"]}
+                club={club}
+              />
+      }
+    })
+  }
+
+
+
   let clubTiles
   if (clubs.length !== 0) {
     clubTiles = clubs.map((club) => {
-      return <ClubTile
-              key={club["id"]}
-              club={club}
-            />
+      if (club["club_class"] == "wood") {
+        return <WoodTile
+                key={club["id"]}
+                club={club}
+              />
+      } else if (club["club_class"] == "iron") {
+        return <IronTile
+                key={club["id"]}
+                club={club}
+              />
+      }
     })
   }
 
@@ -49,8 +81,11 @@ const HomePage = (props) => {
     <div className="homePage">
     <div className="grid-container">
       <h1> Your Clubs: </h1>
-      <div className="grid-x grid-margin-x">
-      {clubTiles}
+      <div className="grid-x grid-margin-x woods">
+      {woodTiles}
+      </div>
+      <div className="grid-x grid-margin-x irons">
+      {ironTiles}
       </div>
       <Link to="/searchAShot">
         <input className="button"  id="searchAShot" value="Look up a shot" />
@@ -60,11 +95,3 @@ const HomePage = (props) => {
   )
 }
 export default HomePage
-// </div>
-// <div className="woods">
-// <img src={driver} alt="Driver" onClick={onClick}/>
-// <img src={threewood} alt="3 Wood" onClick={onClick}/>
-// <img src={fivewood} alt="5 Wood" onClick={onClick}/>
-// <img src={hybrid} alt="Hybrid" onClick={onClick}/>
-// {selectedClub}
-// </div>

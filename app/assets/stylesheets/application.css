@@ -21,6 +21,11 @@
    margin-right: 5%;
  }
 
+ .grid-container {
+  margin: auto;
+  padding: 10px;
+ }
+
 div .clubTile {
   height: 60px;
   line-height: 60px;
@@ -37,12 +42,9 @@ body{
   background-size: cover;
 }
 
-.woods {
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
+.ironTile {
 }
 
-.selected {
-  box-shadow: 10px 10px grey;
+.ironTile a {
+  bottom:0px;
 }

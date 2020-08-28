@@ -1,6 +1,7 @@
 class Club < ApplicationRecord
   validates :user_id, presence: true
   validates :club_name, presence: true
+  validates :club_class, presence: true
 
   belongs_to :user
   has_many :shots
