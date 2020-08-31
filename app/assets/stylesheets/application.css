@@ -21,6 +21,16 @@
    margin-right: 5%;
  }
 
+.top-bar {
+  height: 50px;
+  background-color: black;
+
+}
+
+.right li {
+  background-color: black;
+}
+
  .grid-container {
   margin: auto;
   padding: 10px;
@@ -41,10 +51,27 @@ body{
   background-image: url("home-background.jpeg");
   background-size: cover;
 }
-
-.ironTile {
+.homePage {
+  /* border: 5px solid red; */
 }
 
-.ironTile a {
-  bottom:0px;
+.woods{
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.irons {
+  /* border: 5px solid blue; */
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+}
+
+.ironTile {
+  bottom:200px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  /* border: 4px solid green; */
 }

@@ -16,7 +16,6 @@ import sandwedge from '../../../assets/images/Sand.png'
 
 const WoodTile = (props) => {
 
-
   let image
   if (props.club.club_name === "Driver") {
     image =
