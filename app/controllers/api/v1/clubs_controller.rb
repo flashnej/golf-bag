@@ -34,7 +34,6 @@ class Api::V1::ClubsController < ApplicationController
 
 
   def show
-    binding.pry
     if Club.find(params[:id]).user === current_user
       club = Club.find(params[:id])
       tee_shots = Shot.where(club_id: params[:id], surface: "tee shot").last(5)
