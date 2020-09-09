@@ -21,14 +21,13 @@
    margin-right: 5%;
  }
 
-.top-bar {
-  height: 50px;
-  background-color: black;
-
+.logo img{
+  max-width: 15%;
+  margin-left: 20px;
 }
 
 .right li {
-  background-color: black;
+  /* background-color: black; */
 }
 
  .grid-container {

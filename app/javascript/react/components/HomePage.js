@@ -80,7 +80,6 @@ const HomePage = (props) => {
   return (
     <div className="homePage">
     <div className="grid-container">
-      <h1> Your Clubs: </h1>
       <div className="grid-x grid-margin-x woods">
       {woodTiles}
       </div>
