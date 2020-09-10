@@ -21,13 +21,40 @@
    margin-right: 5%;
  }
 
+ .div-left {
+   float: left;
+   width: 45%;
+ }
+
+ .div-right {
+   float: right;
+   width: inherit;
+   padding-right: 10px;
+ }
+
+ .header-container {
+   max-width: inherit;
+   padding-top:5px;
+ }
+
+ .header {
+    height:30px;
+    line-height:30px;
+}
+
+.header p {
+    list-style-type:none;
+    float:left;
+    padding-left:10px;
+}
+
 .logo img{
-  max-width: 15%;
+  max-width: 25%;
   margin-left: 20px;
 }
 
-.right li {
-  /* background-color: black; */
+.reactapp {
+
 }
 
  .grid-container {
