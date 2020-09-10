@@ -79,17 +79,16 @@ const HomePage = (props) => {
 
   return (
     <div className="homePage">
+    <Link to="/searchAShot">
+      <input className="button"  id="searchAShot" value="Look up a shot" />
+    </Link>
     <div className="grid-container">
-      <h1> Your Clubs: </h1>
       <div className="grid-x grid-margin-x woods">
       {woodTiles}
       </div>
       <div className="grid-x grid-margin-x irons">
       {ironTiles}
       </div>
-      <Link to="/searchAShot">
-        <input className="button"  id="searchAShot" value="Look up a shot" />
-      </Link>
     </div>
     </div>
   )

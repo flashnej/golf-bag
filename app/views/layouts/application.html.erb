@@ -7,9 +7,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  
-  <nav class="top-bar">
-    <h1><a href="/">GolfBag</a></h1>
+
+  <!-- <div class="top-bar">
+
+    <div class="logo">
+      <a href="/">
+        <%=image_tag("Logo.png", alt: "Golf Bag")%>
+      </a>
+    </div>
 
     <section class="top-bar-section">
       <ul class="right">
@@ -21,25 +26,49 @@
         <%- end -%>
       </ul>
     </section>
-  </nav>
+  </div> -->
 
-  <%- flash.each do |key, value| -%>
-    <div class="flash flash-<%= key %>">
-      <%= value %>
-    </div>
-  <%- end -%>
+  <div class="header-container">
+      <div class="div-left logo">
+        <a class='header' href="/">
+          <%=image_tag("Logo.png", alt: "Golf Bag")%>
+        </a>
+      </div>
+      <div class="div-right authenticate">
+        <%- if current_user -%>
+          <p class='header'><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></p>
+        <%- else -%>
+          <p class='header'><%= link_to 'Sign Up', new_user_registration_path %></p>
+          <p class='header'><%= link_to 'Sign In', new_user_session_path %></p>
+        <%- end -%>
+      </div>
+  </div>
 
-  <%= yield %>
-
-  <%= javascript_include_tag 'application' %>
-  
-  <%- if Rails.env.development? || Rails.env.test? -%> 
-    <%= javascript_tag do %>
-      window.railsEnv = '<%= Rails.env %>'
+  <div class="reactapp">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <%- flash.each do |key, value| -%>
+      <div class="flash flash-<%= key %>">
+        <%= value %>
+      </div>
     <%- end -%>
-  <%- end -%>
-  <%= javascript_pack_tag 'application' %>
-  
-  <%= yield :extra_footer %>
+
+    <%= yield %>
+
+    <%= javascript_include_tag 'application' %>
+
+    <%- if Rails.env.development? || Rails.env.test? -%>
+      <%= javascript_tag do %>
+        window.railsEnv = '<%= Rails.env %>'
+      <%- end -%>
+    <%- end -%>
+    <%= javascript_pack_tag 'application' %>
+
+    <%= yield :extra_footer %>
+  </div>
 </body>
 </html>
