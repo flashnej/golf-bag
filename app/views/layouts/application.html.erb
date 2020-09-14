@@ -8,26 +8,6 @@
 </head>
 <body>
 
-  <!-- <div class="top-bar">
-
-    <div class="logo">
-      <a href="/">
-        <%=image_tag("Logo.png", alt: "Golf Bag")%>
-      </a>
-    </div>
-
-    <section class="top-bar-section">
-      <ul class="right">
-        <%- if current_user -%>
-          <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
-        <%- else -%>
-          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-          <li><%= link_to 'Sign In', new_user_session_path %></li>
-        <%- end -%>
-      </ul>
-    </section>
-  </div> -->
-
   <div class="header-container">
       <div class="div-left logo">
         <a class='header' href="/">
@@ -36,10 +16,17 @@
       </div>
       <div class="div-right authenticate">
         <%- if current_user -%>
-          <p class='header'><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></p>
+          <div class="signout">
+            <%=link_to image_tag("signout.png", alt: "Sign Out"),destroy_user_session_path, method: :delete%>
+          </div>
         <%- else -%>
-          <p class='header'><%= link_to 'Sign Up', new_user_registration_path %></p>
-          <p class='header'><%= link_to 'Sign In', new_user_session_path %></p>
+
+        <div class="signup">
+          <%=link_to image_tag("signup.png", alt: "Sign Up"),new_user_registration_path%>
+        </div>
+        <div class="signin">
+          <%=link_to image_tag("signin.png", alt: "Sign In"),new_user_session_path%>
+        </div>
         <%- end -%>
       </div>
   </div>
