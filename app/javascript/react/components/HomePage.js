@@ -83,12 +83,12 @@ const HomePage = (props) => {
         <div className="grid-x grid-margin-x">
           <div className="columns cell small-6">
             <Link to="/searchAShot">
-              <input className="leftbutton"  id="searchAShot" value="Choose a Club" />
+              <input className="leftbutton button"  id="searchAShot" value="Choose a Club" />
             </Link>
           </div>
           <div className="columns cell small-6">
             <Link to="/searchAShot">
-              <input className="rightbutton"  id="distanceTable" value="Distance Table" />
+              <input className="rightbutton button"  id="distanceTable" value="Distance Table" />
             </Link>
           </div>
         </div>
