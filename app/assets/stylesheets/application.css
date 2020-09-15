@@ -83,7 +83,7 @@ div .clubTile {
 }
 
 body{
-  background-image: url('images/home-background.jpg');
+  background-image: url('homebackground.jpg');
   background-size: cover;
   overflow: hidden;
 }
