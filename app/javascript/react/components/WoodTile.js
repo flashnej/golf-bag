@@ -59,7 +59,7 @@ const WoodTile = (props) => {
   }
 
   return (
-    <div className="columns cell small-3">
+    <div className="columns cell small-3 woodTiles">
       <a href={`./club/${props.club.id}`}>
         <div>
             {image}

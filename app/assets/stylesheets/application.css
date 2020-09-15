@@ -83,24 +83,31 @@ div .clubTile {
 }
 
 body{
-  background-image: url("home-background.jpeg");
+  background-image: url("home-background.jpg");
   background-size: cover;
+  overflow: hidden;
 }
 .homePage {
-  /* border: 5px solid red; */
 }
 
 .woods{
   margin-left: auto;
   margin-right: auto;
+  margin-top: -5%;
   width: 50%;
+  height: 45%;
+}
+
+.woodTiles:hover{
+  margin-top: -8px;
 }
 
 .irons {
-  /* border: 5px solid blue; */
+  height: 30%;
   margin-left: auto;
   margin-right: auto;
   width: 70%;
+  margin-top: 2px;
 }
 
 .ironTile {
@@ -108,12 +115,19 @@ body{
   margin-left: auto;
   margin-right: auto;
   width: 50%;
-  /* border: 4px solid green; */
+  margin-bottom: auto;
+  height: 300px;
 }
 
-
+.ironTile:hover{
+  margin-top: -8px;
+}
 
 .leftbutton {
+  margin-top: -20%;
+  margin-right: 40px;
+  font-variant: small-caps;
+  font-weight: bold;
   float: right;
   text-align: center;
   background-color: black;
@@ -126,7 +140,15 @@ body{
   cursor: pointer;
 }
 
+.leftbutton:hover{
+  background-color: green;
+}
+
 .rightbutton {
+  margin-top: -20%;
+  margin-left: 40px;
+  font-variant: small-caps;
+  font-weight: bold;
   float: left;
   text-align: center;
   background-color: black;
@@ -137,4 +159,19 @@ body{
   display: inline-block;
   font-size: 16px;
   cursor: pointer;
+}
+
+.rightbutton:hover{
+  background-color: green;
+}
+
+.recomendedShots {
+  background-color: grey;
+  opacity: 50%;
+}
+
+.shotList {
+  background-color: grey;
+  opacity: 70%;
+  width: 30%;
 }

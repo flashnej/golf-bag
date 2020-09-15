@@ -72,9 +72,11 @@ const ClubShowPage = (props) => {
       </label>
     </form>
     <h4>{surface} Shots </h4>
+    <div className="shotList">
       <ul>
         {shotList}
       </ul>
+    </div>
       <Link to={`../${id}/addAShot`}>
         <input className="button"  id="addAShot" value="Add a shot" />
       </Link>

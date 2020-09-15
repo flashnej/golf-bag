@@ -83,7 +83,7 @@ const HomePage = (props) => {
         <div className="grid-x grid-margin-x">
           <div className="columns cell small-6">
             <Link to="/searchAShot">
-              <input className="leftbutton"  id="searchAShot" value="Look up a shot" />
+              <input className="leftbutton"  id="searchAShot" value="Choose a Club" />
             </Link>
           </div>
           <div className="columns cell small-6">

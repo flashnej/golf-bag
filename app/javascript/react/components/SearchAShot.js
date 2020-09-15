@@ -61,9 +61,11 @@ const SearchAShot = (props) => {
         <input className="button" type="submit" value="Submit" />
       </form>
       <h1> Shots</h1>
-      <ul>
-      {recomendedShotTile}
-      </ul>
+      <div className="recomendedShots">
+        <ul>
+        {recomendedShotTile}
+        </ul>
+      </div>
     </div>
   )
 }
