@@ -93,9 +93,8 @@ body{
 .woods{
   margin-left: auto;
   margin-right: auto;
-  margin-top: -5%;
   width: 50%;
-  height: 45%;
+  height: 270px;
 }
 
 .woodTiles:hover{
