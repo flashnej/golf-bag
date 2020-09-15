@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react"
-import { Link, Redirect, Route } from "react-router-dom"
+import { Link, Redirect } from "react-router-dom"
 
 import WoodTile from "./WoodTile.js"
 import IronTile from "./IronTile.js"
+import Unauthenticated from "./Unauthenticated.js"
 
 const HomePage = (props) => {
   const [clubs, setClubs] = useState([])
@@ -30,6 +31,10 @@ const HomePage = (props) => {
           setClubs(body.clubs)
         }
       })
+  }
+
+  if (redirect) {
+      return <Redirect to='/unauthenticated' />
   }
 
 
