@@ -125,7 +125,7 @@ body{
 
 .leftbutton {
   margin-top: -20%;
-  margin-right: 40px;
+  margin-right: 5%;
   font-variant: small-caps;
   font-weight: bold;
   float: right;
@@ -146,7 +146,7 @@ body{
 
 .rightbutton {
   margin-top: -20%;
-  margin-left: 40px;
+  margin-left: 5%;
   font-variant: small-caps;
   font-weight: bold;
   float: left;
