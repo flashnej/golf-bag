@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/club/:id', to: 'static_pages#index'
   get ':id/addAShot', to: 'static_pages#index'
   get '/searchAShot', to: 'static_pages#index'
+  get '/unauthenticated', to: 'static_pages#index'
 
   namespace :api do
     namespace :v1 do
