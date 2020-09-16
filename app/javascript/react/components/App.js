@@ -6,6 +6,7 @@ import ClubShowPage from "./ClubShowPage"
 import AddAShotForm from "./AddAShotForm"
 import SearchAShot from "./SearchAShot"
 import Unauthenticated from "./Unauthenticated"
+import DistanceTableShowPage from "./DistanceTableShowPage"
 
 export const App = (props) => {
   return (
@@ -16,6 +17,7 @@ export const App = (props) => {
         <Route exact path="/:id/addAShot" component={AddAShotForm} />
         <Route exact path="/searchAShot" component={SearchAShot} />
         <Route exact path = "/unauthenticated" component={Unauthenticated}/>
+        <Route exact path = "/distanceTable" component={DistanceTableShowPage} />
       </Switch>
     </BrowserRouter>
   )
