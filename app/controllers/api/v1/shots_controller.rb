@@ -21,6 +21,31 @@ class Api::V1::ShotsController < ApplicationController
     render json: shots
   end
 
+  def index
+    user = current_user
+    shots = user.shots
+    clubs = user.clubs
+    club_names = []
+    clubs.each do |club|
+      club_names.push club.club_name
+    end
+    shots_by_club = Hash[club_names.collect { |item| [item, {} ] } ]
+    shots.each do |shot|
+      club = shot.club.club_name
+      quality = shot.shot_quality
+      if shots_by_club[club][quality] === nil
+        shots_by_club[club][quality] = shot.distance
+      else
+        shots_by_club[club][quality] = (shots_by_club[club][quality] + shot.distance) /2
+      end
+    end
+    payload = club_names.map do |name|
+      [name, shots_by_club[name]["good"], shots_by_club[name]["average"], shots_by_club[name]["bad"]]
+    end
+    payload.unshift(["Club", "Good", "Average", "Bad"])
+    render json: payload
+  end
+
   def search
     user = current_user
     shots = user.shots.where(surface: params["surface"])

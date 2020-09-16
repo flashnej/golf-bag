@@ -7,12 +7,14 @@ Rails.application.routes.draw do
   get ':id/addAShot', to: 'static_pages#index'
   get '/searchAShot', to: 'static_pages#index'
   get '/unauthenticated', to: 'static_pages#index'
+  get '/distanceTable', to: 'static_pages#index'
 
   namespace :api do
     namespace :v1 do
       resources :clubs, only: [:index, :create, :show] do
-        resources :shots, only: [:index, :create, :show]
+        resources :shots, only: [:create, :show]
       end
+      resources :shots, only: [:index]
       get '/shots/:distance/:surface' => 'shots#search'
     end
   end
