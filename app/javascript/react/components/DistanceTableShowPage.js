@@ -12,6 +12,7 @@ const DistanceTableShowPage = (props) => {
   }, [])
 
   const fetchData = (value) => {
+    setSurface(value)
     fetch(`/api/v1/distanceTable/${value}`)
     .then((response) => {
       if (response.ok) {
