@@ -8,6 +8,7 @@ const DistanceTableTile = (props) => {
 
   return (
     <div className="chart">
+    <p> {title} </p>
       <Chart
         class="chart"
         chartType="ScatterChart"
