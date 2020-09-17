@@ -26,12 +26,26 @@ const DistanceTableTile = (props) => {
 
 
   return (
-    <div>
+    <div className="chart">
       <Chart
-        chartType="ColumnChart"
+        class="chart"
+        chartType="ScatterChart"
+        loader={<div className="loading"><p>Loading Chart...</p></div>}
         width="100%"
         height="400px"
         data={data}
+        options={{
+          colors: ['green', '#fffb8c', 'red'],
+          vAxis: {
+            title: 'Yards',
+            minValue: 0,
+            gridLine: {color: 'green'},
+          },
+          backgroundColor: 'none',
+          boxStyle: {
+            strokeWidth:30
+          }
+        }}
       />
 </div>
   )

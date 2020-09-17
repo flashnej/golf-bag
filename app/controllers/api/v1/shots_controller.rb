@@ -29,6 +29,9 @@ class Api::V1::ShotsController < ApplicationController
     clubs.each do |club|
       club_names.push club.club_name
     end
+    woods = club_names[0,4]
+    irons = club_names[5, 13].reverse
+    club_names= woods+irons
     shots_by_club = Hash[club_names.collect { |item| [item, {} ] } ]
     shots.each do |shot|
       club = shot.club.club_name
