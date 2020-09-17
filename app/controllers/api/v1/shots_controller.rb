@@ -30,6 +30,7 @@ class Api::V1::ShotsController < ApplicationController
       club_names.push club.club_name
     end
     shots_by_club = Hash[club_names.collect { |item| [item, {} ] } ]
+    binding.pry
     shots.each do |shot|
       club = shot.club.club_name
       quality = shot.shot_quality
@@ -40,6 +41,16 @@ class Api::V1::ShotsController < ApplicationController
       end
     end
     payload = club_names.map do |name|
+      if shots_by_club[name]["good"] === nil
+        shots_by_club[name]["good"] = 0
+      end
+      if shots_by_club[name]["average"] === nil
+        shots_by_club[name]["average"] = 0
+      end
+      if shots_by_club[name]["bad"] === nil
+        shots_by_club[name]["bad"] = 0
+      end
+
       [name, shots_by_club[name]["good"], shots_by_club[name]["average"], shots_by_club[name]["bad"]]
     end
     payload.unshift(["Club", "Good", "Average", "Bad"])
