@@ -30,7 +30,6 @@ class Api::V1::ShotsController < ApplicationController
       club_names.push club.club_name
     end
     shots_by_club = Hash[club_names.collect { |item| [item, {} ] } ]
-    binding.pry
     shots.each do |shot|
       club = shot.club.club_name
       quality = shot.shot_quality
