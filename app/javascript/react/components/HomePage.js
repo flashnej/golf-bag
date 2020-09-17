@@ -93,7 +93,7 @@ const HomePage = (props) => {
           </div>
           <div className="columns cell small-6">
             <Link to="/distanceTable">
-              <input className="rightbutton button"  id="distanceTable" value="Distance Table" />
+              <input className="rightbutton button"  id="distanceTable" value="Distance Tables" />
             </Link>
           </div>
         </div>

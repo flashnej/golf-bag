@@ -1,39 +1,35 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 import { Chart } from "react-google-charts"
 
 const DistanceTableTile = (props) => {
 
-  const [data, setData] = useState([])
 
-  useEffect(() => {
-    fetch('/api/v1/shots')
-    .then((response) => {
-      if (response.ok) {
-        return response
-      } else {
-        debugger
-      }
-      })
-      .then((response) => response.json())
-      .then((body) => {
-        if (body.error) {
-          debugger
-        } else {
-          setData(body)
-        }
-      })
-  }, [])
-
+  let title = props.surface.charAt(0).toUpperCase() + props.surface.slice(1)
 
   return (
-    <div>
+    <div className="chart">
       <Chart
-        chartType="ColumnChart"
+        class="chart"
+        chartType="ScatterChart"
+        loader={<div className="loading"><p>Loading Chart...</p></div>}
         width="100%"
         height="400px"
-        data={data}
+        data={props.data}
+        options={{
+          title:`${title} Distances`,
+          titleTextStyle: {
+            fontSize: 36,
+            align: 'center'
+          },
+          colors: ['green', '#fffb8c', 'red'],
+          vAxis: {
+            title: 'Yards',
+            minValue: 0
+          },
+          backgroundColor: 'none',
+        }}
       />
-</div>
+    </div>
   )
 }
 

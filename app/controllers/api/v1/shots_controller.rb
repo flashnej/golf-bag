@@ -22,13 +22,17 @@ class Api::V1::ShotsController < ApplicationController
   end
 
   def index
+    surface = params["surface"]
     user = current_user
-    shots = user.shots
+    shots = user.shots.where("surface='#{surface}'")
     clubs = user.clubs
     club_names = []
     clubs.each do |club|
       club_names.push club.club_name
     end
+    woods = club_names[0,4]
+    irons = club_names[5, 13].reverse
+    club_names= woods+irons
     shots_by_club = Hash[club_names.collect { |item| [item, {} ] } ]
     shots.each do |shot|
       club = shot.club.club_name
