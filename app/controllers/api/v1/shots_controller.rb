@@ -22,8 +22,9 @@ class Api::V1::ShotsController < ApplicationController
   end
 
   def index
+    surface = params["surface"]
     user = current_user
-    shots = user.shots
+    shots = user.shots.where("surface='#{surface}'")
     clubs = user.clubs
     club_names = []
     clubs.each do |club|

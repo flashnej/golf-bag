@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       resources :clubs, only: [:index, :create, :show] do
         resources :shots, only: [:create, :show]
       end
-      resources :shots, only: [:index]
+      get '/distanceTable/:surface' => 'shots#index'
       get '/shots/:distance/:surface' => 'shots#search'
     end
   end

@@ -3,10 +3,17 @@ import { Chart } from "react-google-charts"
 
 const DistanceTableTile = (props) => {
 
-  const [data, setData] = useState([])
+  let [data, setData] = useState([])
+  let [surface, setSurface] = useState("fairway")
 
   useEffect(() => {
-    fetch('/api/v1/shots')
+    fetchData(surface)
+  }, [])
+
+  let title = surface.charAt(0).toUpperCase() + surface.slice(1)
+
+  const fetchData = (value) => {
+    fetch(`/api/v1/distanceTable/${value}`)
     .then((response) => {
       if (response.ok) {
         return response
@@ -22,32 +29,48 @@ const DistanceTableTile = (props) => {
           setData(body)
         }
       })
-  }, [])
+    }
 
+  const changeSurface = (event) => {
+    fetchData(event.currentTarget.value)
+    setSurface(event.currentTarget.value)
+  }
 
   return (
-    <div className="chart">
-      <Chart
-        class="chart"
-        chartType="ScatterChart"
-        loader={<div className="loading"><p>Loading Chart...</p></div>}
-        width="100%"
-        height="400px"
-        data={data}
-        options={{
-          colors: ['green', '#fffb8c', 'red'],
-          vAxis: {
-            title: 'Yards',
-            minValue: 0,
-            gridLine: {color: 'green'},
-          },
-          backgroundColor: 'none',
-          boxStyle: {
-            strokeWidth:30
-          }
-        }}
-      />
-</div>
+    <div>
+      <label>
+        View shots hit from:
+        <select value={surface} onChange={changeSurface} className="selector">
+          <option value="fairway">Fairway</option>
+          <option value="tee shot">Tee Box</option>
+          <option value="rough">Rough</option>
+          <option value="sand">Sand</option>
+        </select>
+      </label>
+      <div className="chart">
+        <Chart
+          class="chart"
+          chartType="ScatterChart"
+          loader={<div className="loading"><p>Loading Chart...</p></div>}
+          width="100%"
+          height="400px"
+          data={data}
+          options={{
+            title:`${title} Distances`,
+            titleTextStyle: {
+              fontSize: 36,
+              align: 'center'
+            },
+            colors: ['green', '#fffb8c', 'red'],
+            vAxis: {
+              title: 'Yards',
+              minValue: 0
+            },
+            backgroundColor: 'none',
+          }}
+        />
+      </div>
+    </div>
   )
 }
 

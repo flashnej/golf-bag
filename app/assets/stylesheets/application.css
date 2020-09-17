@@ -182,3 +182,7 @@ body{
   background-color: lightgrey;
   padding: 5px;
 }
+
+.selector {
+  width: 15%;
+}
