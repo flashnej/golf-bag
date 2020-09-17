@@ -4,11 +4,11 @@ import { Chart } from "react-google-charts"
 import DistanceTableTile from "./DistanceTableTile"
 
 const DistanceTableShowPage = (props) => {
-  let [surface, setSurface] = useState("Fairway")
+  let [surface, setSurface] = useState("fairway")
   let [data, setData] = useState([])
 
   useEffect(() => {
-    fetchData(surface)
+    fetchData("fairway")
   }, [])
 
   const fetchData = (value) => {
