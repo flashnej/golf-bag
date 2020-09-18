@@ -37,7 +37,6 @@ const HomePage = (props) => {
       return <Redirect to='/unauthenticated' />
   }
 
-
   let woodTiles
   let ironTiles
   if (clubs.length !== 0) {
@@ -57,29 +56,6 @@ const HomePage = (props) => {
               />
       }
     })
-  }
-
-
-
-  let clubTiles
-  if (clubs.length !== 0) {
-    clubTiles = clubs.map((club) => {
-      if (club["club_class"] == "wood") {
-        return <WoodTile
-                key={club["id"]}
-                club={club}
-              />
-      } else if (club["club_class"] == "iron") {
-        return <IronTile
-                key={club["id"]}
-                club={club}
-              />
-      }
-    })
-  }
-
-  const onClick = (props) => {
-    setSellectedClub(props.target.alt)
   }
 
   return (

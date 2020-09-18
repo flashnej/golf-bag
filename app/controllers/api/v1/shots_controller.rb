@@ -28,7 +28,7 @@ class Api::V1::ShotsController < ApplicationController
     clubs = user.clubs
     club_names = []
     clubs.each do |club|
-      club_names.push club.club_name
+      club_names.push(club.club_name)
     end
     woods = club_names[0,4]
     irons = club_names[5, 13].reverse
