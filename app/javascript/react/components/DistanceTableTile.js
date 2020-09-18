@@ -10,7 +10,7 @@ const DistanceTableTile = (props) => {
     <div className="chart">
     <p> {title} </p>
       <Chart
-        class="chart"
+        graphId="1"
         chartType="ScatterChart"
         loader={<div className="loading"><p>Loading Chart...</p></div>}
         width="100%"
